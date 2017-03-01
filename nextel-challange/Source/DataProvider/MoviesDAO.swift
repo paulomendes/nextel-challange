@@ -53,6 +53,20 @@ class MoviesDAO : MoviesDAOProtocol {
         }
     }
     
+    func searchMovieByTitle(query: String, success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void) {
+        self.moviesConnector.searchMovieByOriginalTitle(query: query, success: { moviesData in
+            let movies = self.convertDataIntoModel(data: moviesData)
+            success(movies)
+        }) { (err) in
+            switch err {
+            case .internetError:
+                failure(.connectionError)
+            case .errorInSaveLocalFile:
+                failure(.fileError)
+            }
+        }
+    }
+    
     func getUpcomingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void) {
         
         self.moviesPersistence.readFile(file: .upcomingMovies) { (fileData, err) in

@@ -6,6 +6,9 @@ import UIKit
 protocol MoviesConnectorProtocol {
     func getNowPlayingMovies(success: @escaping (Data) -> Void, failure: @escaping (MoviesConnectorError) -> Void )
     func getUpcomingMovies(success: @escaping (Data) -> Void, failure: @escaping (MoviesConnectorError) -> Void )
+    func searchMovieByOriginalTitle(query: String,
+                                    success: @escaping (Data) -> Void,
+                                    failure: @escaping (MoviesConnectorError) -> Void )
 }
 
 enum MoviesConnectorError {
@@ -25,6 +28,31 @@ class MoviesConnector : MoviesConnectorProtocol {
     
     init(moviesPersistence: MoviesPersistence) {
         self.moviesPersistence = moviesPersistence
+    }
+    
+    func searchMovieByOriginalTitle(query: String,
+                                    success: @escaping (Data) -> Void,
+                                    failure: @escaping (MoviesConnectorError) -> Void ) {
+        let params = ["api_key" : DataProvider.apiKey,
+                      "query" : query]
+        
+        let utilityQueue = DispatchQueue.global(qos: .utility)
+        
+        Alamofire
+            .request(DataProvider.searchMoviePath, parameters: params)
+            .validate()
+            .responseString (queue: utilityQueue) { response in
+                switch response.result {
+                case .success:
+                    DispatchQueue.main.async {
+                        success(response.data!)
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        failure(.internetError)
+                    }
+                }
+        }
     }
     
     func getNowPlayingMovies(success: @escaping (Data) -> Void, failure: @escaping (MoviesConnectorError) -> Void ) {
@@ -48,22 +76,29 @@ class MoviesConnector : MoviesConnectorProtocol {
                 switch response.result {
                 case .success:
                     if self.moviesPersistence.saveFile(stringJson: response.result.value!, file: .nowPlayingMovies) {
-                        success(response.data!)
+                        DispatchQueue.main.async {
+                            success(response.data!)
+                        }
                     } else {
-                        failure(.errorInSaveLocalFile)
+                        DispatchQueue.main.async {
+                            failure(.errorInSaveLocalFile)
+                        }
                     }
                 case .failure:
-                    failure(.internetError)
+                    DispatchQueue.main.async {
+                        failure(.internetError)
+                    }
                 }
         }
     }
     
     func getUpcomingMovies(success: @escaping (Data) -> Void, failure: @escaping (MoviesConnectorError) -> Void ) {
         
-        let ago = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
+        let add = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
+        let add2 = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         
-        let futureString = MoviesConnector.formatter.string(from: ago)
-        let nowString = MoviesConnector.formatter.string(from: Date())
+        let futureString = MoviesConnector.formatter.string(from: add)
+        let nowString = MoviesConnector.formatter.string(from: add2)
         
         let params = ["api_key" : DataProvider.apiKey,
                       "primary_release_date.gte" : nowString,
@@ -79,12 +114,18 @@ class MoviesConnector : MoviesConnectorProtocol {
                 switch response.result {
                 case .success:
                     if self.moviesPersistence.saveFile(stringJson: response.result.value!, file: .upcomingMovies) {
-                        success(response.data!)
+                        DispatchQueue.main.async {
+                            success(response.data!)
+                        }
                     } else {
-                        failure(.errorInSaveLocalFile)
+                        DispatchQueue.main.async {
+                            failure(.errorInSaveLocalFile)
+                        }
                     }
                 case .failure:
-                    failure(.internetError)
+                    DispatchQueue.main.async {
+                        failure(.internetError)
+                    }
                 }
         }
     }

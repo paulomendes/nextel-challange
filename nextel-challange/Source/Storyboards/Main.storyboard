@@ -20,13 +20,44 @@
                     <view key="view" contentMode="scaleToFill" id="5rB-5i-QtU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-Hf-OC1">
+                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oM7-Up-oPj" id="N8E-JF-QWZ"/>
+                                    <outlet property="delegate" destination="oM7-Up-oPj" id="KHV-Iz-RIa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="LAG-2m-b9S"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="pBC-4f-iDp" id="gDO-L3-uIG"/>
+                        <outlet property="tableView" destination="5zX-Hf-OC1" id="vE0-tE-hOQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CN-pe-Uwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="DDq-ZQ-y2N">
+                    <connections>
+                        <outlet property="delegate" destination="oM7-Up-oPj" id="RpN-NV-Zt2"/>
+                        <outlet property="searchContentsController" destination="oM7-Up-oPj" id="bPW-dc-bRG"/>
+                        <outlet property="searchResultsDataSource" destination="oM7-Up-oPj" id="FM5-KD-0Ds"/>
+                        <outlet property="searchResultsDelegate" destination="oM7-Up-oPj" id="kLO-Hr-NlA"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="pBC-4f-iDp">
+                    <connections>
+                        <outlet property="delegate" destination="oM7-Up-oPj" id="qaR-yr-4xR"/>
+                        <outlet property="searchContentsController" destination="oM7-Up-oPj" id="tx7-8L-Nh4"/>
+                        <outlet property="searchResultsDataSource" destination="oM7-Up-oPj" id="ziY-Px-Rhq"/>
+                        <outlet property="searchResultsDelegate" destination="oM7-Up-oPj" id="epe-W5-dZx"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1471" y="750"/>
+            <point key="canvasLocation" x="-1471.2" y="749.7751124437782"/>
         </scene>
         <!--Upcoming-->
         <scene sceneID="KIl-sJ-hYQ">
