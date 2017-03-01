@@ -9,7 +9,8 @@ enum MoviesDAOError {
 }
 
 protocol MoviesDAOProtocol {
-    func getMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
+    func getNowPlayingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
+    func getUpcomingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
 }
 
 class MoviesDAO : MoviesDAOProtocol {
@@ -22,10 +23,41 @@ class MoviesDAO : MoviesDAOProtocol {
         self.moviesConnector = connector
     }
     
-    func getMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void) {
-        self.moviesPersistence.readFile { (fileData, err) in
+    func getNowPlayingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void) {
+        self.moviesPersistence.readFile(file: .upcomingMovies) { (fileData, err) in
             if err == .fileNotFound || err == .invalidFileFormat || err == .invalidCache {
                 self.moviesConnector.getNowPlayingMovies(success: { moviesData in
+                    let movies = self.convertDataIntoModel(data: moviesData)
+                    if movies.count > 0 {
+                        success(movies)
+                    } else {
+                        failure(.parserError)
+                    }
+                }, failure: { err in
+                    switch err {
+                    case .internetError:
+                        failure(.connectionError)
+                    case .errorInSaveLocalFile:
+                        failure(.fileError)
+                    }
+                })
+            } else {
+                let movies = self.convertDataIntoModel(data: fileData!)
+                
+                if movies.count > 0 {
+                    success(movies)
+                } else {
+                    failure(.parserError)
+                }
+            }
+        }
+    }
+    
+    func getUpcomingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void) {
+        
+        self.moviesPersistence.readFile(file: .upcomingMovies) { (fileData, err) in
+            if err == .fileNotFound || err == .invalidFileFormat || err == .invalidCache {
+                self.moviesConnector.getUpcomingMovies(success: { moviesData in
                     let movies = self.convertDataIntoModel(data: moviesData)
                     if movies.count > 0 {
                         success(movies)

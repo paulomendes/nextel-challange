@@ -9,6 +9,6 @@ enum PersistenceErrors {
 }
 
 protocol Persistence {
-    func saveFile(stringJson: String) -> Bool
-    func readFile(success: @escaping (Data?, PersistenceErrors) -> Void)
+    func saveFile(stringJson: String, file: MovieFile) -> Bool
+    func readFile(file: MovieFile, success: @escaping (Data?, PersistenceErrors) -> Void)
 }

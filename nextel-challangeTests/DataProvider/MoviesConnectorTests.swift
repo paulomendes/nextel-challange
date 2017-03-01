@@ -34,6 +34,7 @@ class MoviesConnectorTests: XCTestCase {
             print(movies)
             expec.fulfill()
         }, failure: { err in
+            XCTFail()
             expec.fulfill()
         })
         
@@ -41,6 +42,26 @@ class MoviesConnectorTests: XCTestCase {
             XCTAssertNil(err, "Something gone wrong")
         }
     }
+    
+    func testShouldCallWithSuccessTheWebService() {
+        let moviesPersistence = MoviesPersistence(fileManager: FileManager.default, userDefaults: UserDefaults.standard)
+        let moviesConnector = MoviesConnector(moviesPersistence: moviesPersistence)
+        
+        let expec = expectation(description: "NowPlayingMovies")
+        
+        moviesConnector.getNowPlayingMovies(success: { movies in
+            print(movies)
+            expec.fulfill()
+        }, failure: { err in
+            XCTFail()
+            expec.fulfill()
+        })
+        
+        self.waitForExpectations(timeout: 5) { (err) in
+            XCTAssertNil(err, "Something gone wrong")
+        }
+    }
+
     
     
 }

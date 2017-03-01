@@ -21,7 +21,7 @@ class MoviesPersistenceTests: XCTestCase {
         let fauxFileManager = FauxFileManager()
         let moviesPersistence = MoviesPersistence(fileManager: fauxFileManager, userDefaults: UserDefaults.standard)
         
-        XCTAssertFalse(moviesPersistence.saveFile(stringJson: "faux"))
+        XCTAssertFalse(moviesPersistence.saveFile(stringJson: "faux", file: .upcomingMovies))
     }
     
     func testShouldSaveIntoUserDefaultsTheCacheData() {
@@ -41,7 +41,7 @@ class MoviesPersistenceTests: XCTestCase {
         
         let moviesPersistence = MoviesPersistence(fileManager: FileManager.default, userDefaults: fauxUserDefaults)
         
-        XCTAssertTrue(moviesPersistence.saveFile(stringJson: "faux"))
+        XCTAssertTrue(moviesPersistence.saveFile(stringJson: "faux", file: .upcomingMovies))
         XCTAssertTrue(fauxUserDefaults.didSyncronized)
     }
     
@@ -66,7 +66,7 @@ class MoviesPersistenceTests: XCTestCase {
         
         let ex = expectation(description: "MoviesPersistence")
         
-        moviesPersistence.readFile { (movieData, err) in
+        moviesPersistence.readFile(file: .upcomingMovies) { (movieData, err) in
             XCTAssertEqual(err, .invalidCache)
             ex.fulfill()
         }
@@ -97,7 +97,7 @@ class MoviesPersistenceTests: XCTestCase {
         
         let ex = expectation(description: "MoviesPersistence")
         
-        moviesPersistence.readFile { (movieData, err) in
+        moviesPersistence.readFile(file: .upcomingMovies) { (movieData, err) in
             ex.fulfill()
         }
         
