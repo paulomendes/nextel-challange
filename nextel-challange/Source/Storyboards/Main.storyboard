@@ -12,7 +12,7 @@
         <!--Search-->
         <scene sceneID="DE9-OK-sSu">
             <objects>
-                <viewController id="oM7-Up-oPj" customClass="SearchViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewControllerId" id="oM7-Up-oPj" customClass="SearchViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6fu-GH-p34"/>
                         <viewControllerLayoutGuide type="bottom" id="zZb-OH-8rQ"/>
@@ -63,7 +63,7 @@
         <!--Upcoming-->
         <scene sceneID="KIl-sJ-hYQ">
             <objects>
-                <viewController id="zA7-2R-5qi" customClass="UpcomingViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpcomingViewControllerId" id="zA7-2R-5qi" customClass="UpcomingViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xsM-zI-8WE"/>
                         <viewControllerLayoutGuide type="bottom" id="grf-DA-jsX"/>
@@ -179,7 +179,7 @@
         <!--Now Playing-->
         <scene sceneID="AQS-eH-H3w">
             <objects>
-                <viewController title="Now Playing" id="2CE-Od-JMI" customClass="NowPlayingViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NowPlayingViewControllerId" title="Now Playing" id="2CE-Od-JMI" customClass="NowPlayingViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qAg-cp-NDh"/>
                         <viewControllerLayoutGuide type="bottom" id="Thl-wk-U4N"/>
@@ -279,7 +279,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="2hl-U8-UGx">
             <objects>
-                <viewController id="JIg-uN-F8l" customClass="MovieDetailsViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewControllerId" id="JIg-uN-F8l" customClass="MovieDetailsViewController" customModule="nextel_challange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yFz-JX-aVr"/>
                         <viewControllerLayoutGuide type="bottom" id="tF9-WL-W3s"/>
@@ -370,6 +370,6 @@
         <image name="circle-tick-7" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bgh-WX-YeA"/>
+        <segue reference="13d-Da-LoR"/>
     </inferredMetricsTieBreakers>
 </document>

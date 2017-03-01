@@ -23,6 +23,11 @@
 		8042DFD81E6665310055E65D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFD71E6665310055E65D /* SearchViewController.swift */; };
 		8042DFDA1E66699E0055E65D /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFD91E66699E0055E65D /* NowPlayingViewController.swift */; };
 		8042DFDC1E6750A70055E65D /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFDB1E6750A70055E65D /* MovieDetailsViewController.swift */; };
+		8042DFE01E6770170055E65D /* incorrect_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 8042DFDF1E6770170055E65D /* incorrect_json.json */; };
+		8042DFE31E6779230055E65D /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFE21E6779230055E65D /* SearchViewControllerTests.swift */; };
+		8042DFE51E67840F0055E65D /* MovieDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFE41E67840F0055E65D /* MovieDetailsViewControllerTests.swift */; };
+		8042DFE71E6786F90055E65D /* UpcomingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFE61E6786F90055E65D /* UpcomingViewControllerTests.swift */; };
+		8042DFE91E678A370055E65D /* NowPlayingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042DFE81E678A370055E65D /* NowPlayingViewControllerTests.swift */; };
 		807FE88B1E63843F00742D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807FE88A1E63843F00742D65 /* AppDelegate.swift */; };
 		807FE8921E63843F00742D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 807FE8911E63843F00742D65 /* Assets.xcassets */; };
 		807FE8951E63843F00742D65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807FE8931E63843F00742D65 /* LaunchScreen.storyboard */; };
@@ -77,6 +82,11 @@
 		8042DFD71E6665310055E65D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8042DFD91E66699E0055E65D /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		8042DFDB1E6750A70055E65D /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		8042DFDF1E6770170055E65D /* incorrect_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = incorrect_json.json; sourceTree = "<group>"; };
+		8042DFE21E6779230055E65D /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
+		8042DFE41E67840F0055E65D /* MovieDetailsViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		8042DFE61E6786F90055E65D /* UpcomingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingViewControllerTests.swift; sourceTree = "<group>"; };
+		8042DFE81E678A370055E65D /* NowPlayingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewControllerTests.swift; sourceTree = "<group>"; };
 		807FE8871E63843F00742D65 /* nextel-challange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nextel-challange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		807FE88A1E63843F00742D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		807FE8911E63843F00742D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,6 +216,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8042DFE11E67790E0055E65D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8042DFE21E6779230055E65D /* SearchViewControllerTests.swift */,
+				8042DFE41E67840F0055E65D /* MovieDetailsViewControllerTests.swift */,
+				8042DFE61E6786F90055E65D /* UpcomingViewControllerTests.swift */,
+				8042DFE81E678A370055E65D /* NowPlayingViewControllerTests.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		807FE87E1E63843F00742D65 = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +271,7 @@
 		807FE89E1E63843F00742D65 /* nextel-challangeTests */ = {
 			isa = PBXGroup;
 			children = (
+				8042DFE11E67790E0055E65D /* ViewControllers */,
 				8042DFCE1E665AE30055E65D /* Model */,
 				8042DFCB1E6657650055E65D /* ViewModel */,
 				8042DFC11E64D4FA0055E65D /* MoviesPersistence */,
@@ -361,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				807FE8DA1E63C3E400742D65 /* now_playing.json */,
+				8042DFDF1E6770170055E65D /* incorrect_json.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -501,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				807FE8DB1E63C3E400742D65 /* now_playing.json in Resources */,
+				8042DFE01E6770170055E65D /* incorrect_json.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,8 +661,12 @@
 			files = (
 				8042DFD01E665AF20055E65D /* MovieModelTests.swift in Sources */,
 				807FE8A01E63843F00742D65 /* nextel_challangeTests.swift in Sources */,
+				8042DFE31E6779230055E65D /* SearchViewControllerTests.swift in Sources */,
 				8042DFC31E64D50C0055E65D /* MoviesPersistenceTests.swift in Sources */,
+				8042DFE91E678A370055E65D /* NowPlayingViewControllerTests.swift in Sources */,
+				8042DFE51E67840F0055E65D /* MovieDetailsViewControllerTests.swift in Sources */,
 				807FE8D81E639B2B00742D65 /* MoviesConnectorTests.swift in Sources */,
+				8042DFE71E6786F90055E65D /* UpcomingViewControllerTests.swift in Sources */,
 				807FE8D41E63992B00742D65 /* DataProvider.swift in Sources */,
 				8042DFAE1E64AA980055E65D /* MoviesDAOTests.swift in Sources */,
 				8042DFCD1E6657840055E65D /* MovieViewModelTests.swift in Sources */,

@@ -17,7 +17,7 @@ class Container: NSObject {
     }()
     
     
-    func resolveMoviesDAO() -> MoviesDAO {
+    func resolveMoviesDAO() -> MoviesDAOProtocol {
         return MoviesDAO(moviesPersistence: Container.moviesPersistence, connector: Container.moviesConnector)
     }
     

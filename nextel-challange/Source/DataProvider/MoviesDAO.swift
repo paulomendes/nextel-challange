@@ -11,6 +11,7 @@ enum MoviesDAOError {
 protocol MoviesDAOProtocol {
     func getNowPlayingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
     func getUpcomingMovies(success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
+    func searchMovieByTitle(query: String, success: @escaping ([Movie]) -> Void, failure: @escaping (MoviesDAOError) -> Void)
 }
 
 class MoviesDAO : MoviesDAOProtocol {

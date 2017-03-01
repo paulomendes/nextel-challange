@@ -18,7 +18,7 @@ enum MoviesConnectorError {
 
 class MoviesConnector : MoviesConnectorProtocol {
     
-    let moviesPersistence: MoviesPersistence
+    let moviesPersistence: Persistence
     
     static let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,7 +26,7 @@ class MoviesConnector : MoviesConnectorProtocol {
         return formatter
     }()
     
-    init(moviesPersistence: MoviesPersistence) {
+    init(moviesPersistence: Persistence) {
         self.moviesPersistence = moviesPersistence
     }
     

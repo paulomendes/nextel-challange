@@ -3,14 +3,13 @@ import UIKit
 
 class SearchViewController: UIViewController, DataAccessObjectProtocol, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
-    var moviesDAO: MoviesDAO?
+    var moviesDAO: MoviesDAOProtocol?
     
     var movies: [MovieViewModel] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +18,11 @@ class SearchViewController: UIViewController, DataAccessObjectProtocol, UITableV
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = searchController.searchBar
+        self.tableView.tableHeaderView = self.searchController.searchBar
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
     }
     
-    func setMoviesDAO(moviesDAO: MoviesDAO) {
+    func setMoviesDAO(moviesDAO: MoviesDAOProtocol) {
         self.moviesDAO = moviesDAO
     }
     

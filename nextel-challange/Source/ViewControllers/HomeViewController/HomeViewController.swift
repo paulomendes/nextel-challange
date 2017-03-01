@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.loadMoviesData()
     }
     
-    func setMoviesDAO(moviesDAO: MoviesDAO) {
+    func setMoviesDAO(moviesDAO: MoviesDAOProtocol) {
         self.moviesDAO = moviesDAO
     }
     

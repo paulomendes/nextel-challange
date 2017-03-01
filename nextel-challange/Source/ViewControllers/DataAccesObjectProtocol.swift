@@ -1,5 +1,5 @@
 
 protocol DataAccessObjectProtocol {
-    func setMoviesDAO(moviesDAO: MoviesDAO)
+    func setMoviesDAO(moviesDAO: MoviesDAOProtocol)
     func loadMoviesData()
 }
