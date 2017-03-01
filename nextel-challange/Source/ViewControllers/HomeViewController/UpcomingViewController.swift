@@ -13,4 +13,8 @@ class UpcomingViewController: HomeViewController {
             self.resolveError(err)
         })
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "upcoming-to-details", sender: indexPath.row)
+    }
 }

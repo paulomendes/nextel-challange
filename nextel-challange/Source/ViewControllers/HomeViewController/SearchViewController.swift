@@ -66,7 +66,17 @@ class SearchViewController: UIViewController, DataAccessObjectProtocol, UITableV
         self.perform(#selector(self.filter), with: nil, afterDelay: 0.8)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MovieDetailsViewController {
+            destination.movieViewModel = self.movies[sender as! Int]
+        }
+    }
+    
     // MARK: Table View Delegates
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "seach-to-details", sender: indexPath.row)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

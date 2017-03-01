@@ -49,6 +49,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(alert, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MovieDetailsViewController {
+            destination.movieViewModel = self.moviesViewModels[sender as! Int]
+        }
+    }
+    
     // MARK: Table View Delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {

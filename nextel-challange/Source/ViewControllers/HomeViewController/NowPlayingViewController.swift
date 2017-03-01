@@ -14,5 +14,9 @@ class NowPlayingViewController: HomeViewController {
             self.resolveError(err)
         })
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "nowplaying-to-details", sender: indexPath.row)
+    }
 
 }
