@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vUz-Lk-aCx">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vUz-Lk-aCx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -249,7 +249,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Now Playing" image="circle-tick-7" id="rI3-fi-OuC"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" id="rI3-fi-OuC"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Hes-0y-gyp" id="iMX-T3-fHI"/>
                         <outlet property="tableView" destination="LP0-QI-ted" id="sGS-Cm-XM7"/>
@@ -366,9 +366,6 @@
             <point key="canvasLocation" x="-682.39999999999998" y="19.340329835082461"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="circle-tick-7" width="15" height="15"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="13d-Da-LoR"/>
     </inferredMetricsTieBreakers>

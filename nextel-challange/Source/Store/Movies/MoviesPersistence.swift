@@ -38,22 +38,23 @@ class MoviesPersistence: Persistence {
     
     func readFile(file: MovieFile, success: @escaping (Data?, PersistenceErrors) -> Void) {
         
-        let dateCached: Date = self.userDefaults.value(forKey: MoviesPersistence.keyForCache) as! Date
-        
-        if Date().minutes(from: dateCached) <= MoviesPersistence.minutesOfInvalidation {
-            if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let filePath = dir.appendingPathComponent(file.rawValue)
-                do {
-                    let contentsOfFile = try Data(contentsOf: filePath, options: .uncached)
-                    success(contentsOfFile, .none)
-                } catch {
-                    success(nil, .invalidFileFormat)
-                    return
+        if let dateCached: Date = self.userDefaults.value(forKey: MoviesPersistence.keyForCache) as? Date {
+            if Date().minutes(from: dateCached) <= MoviesPersistence.minutesOfInvalidation {
+                if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    let filePath = dir.appendingPathComponent(file.rawValue)
+                    do {
+                        let contentsOfFile = try Data(contentsOf: filePath, options: .uncached)
+                        success(contentsOfFile, .none)
+                    } catch {
+                        success(nil, .invalidFileFormat)
+                        return
+                    }
                 }
+                success(nil, .fileNotFound)
+            } else {
+                success(nil, .invalidCache)
             }
-            success(nil, .fileNotFound)
-        } else {
-            success(nil, .invalidCache)
-        }   
+        }
+        success(nil, .invalidCache)        
     }
 }
