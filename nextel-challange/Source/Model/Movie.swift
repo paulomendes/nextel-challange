@@ -1,7 +1,7 @@
 
 import Gloss
 
-class Movie : Decodable {
+class Movie : Gloss.Decodable {
     let posterPath: String
     let adult: Bool
     let overview: String
